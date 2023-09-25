@@ -1,14 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
+void fib(int n){
+    if (n <= 1)
+        cout<< n;
+   else cout<< fib(n - 1) + fib(n - 2)<<" "; 
+}
 int main()
 {
     int t;
     cin>>t;
-    while (t--)
-    {
-        int x,y;
-        cin>>x>>y;
-        for(int i=x;i<=y;i++)cout<<i<<endl;
-    }
+    
     return 0;
 }
