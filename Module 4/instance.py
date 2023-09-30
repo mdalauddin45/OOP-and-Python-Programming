@@ -15,3 +15,8 @@ nisho = Shop('nisho')
 nisho.add_to_cart('watch')
 nisho.add_to_cart('cap')
 print(nisho.cart)
+
+apurbo = Shop('apurbo')
+apurbo.add_to_cart('ciruni')
+apurbo.add_to_cart('car')
+print(apurbo.cart )
