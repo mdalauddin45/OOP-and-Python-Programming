@@ -56,10 +56,11 @@ class Library:
                 elif book.quantity == 0:
                     print("No copies available!\n")
                     return
-                else:
-                    user.borrowedBooks.append(book)
-                    book.quantity -= 1
-                    return
+                #no need this line
+                # else:
+                #     user.borrowedBooks.append(book)
+                #     book.quantity -= 1
+                #     return
         print(f"Not found any book with name {token}!\n")
 
 bsk = Library('sonar bangla')
