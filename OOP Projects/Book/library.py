@@ -161,5 +161,6 @@ while True:
                     currentUser = None
                 else:
                     print("Invalid option!")
+                    
     except ValueError:
         print("Invalid input. Please enter a valid number.")
