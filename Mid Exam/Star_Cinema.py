@@ -15,7 +15,6 @@ class Hall:
         self.show_list.append(show_info)
         
         seat_allocation = [['0' for _ in range(self.cols)] for _ in range(self.rows)]
-
         self.seats[id] = seat_allocation
     
     def book_seats(self, show_id, row, col):
