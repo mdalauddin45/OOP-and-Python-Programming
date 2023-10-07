@@ -98,6 +98,7 @@ while True:
         col = int(input("ENTER SEAT COL: "))
         hall1.book_seats(show_id, row, col)
     elif ch ==4:
+        print('Exitting....')
         break
     else:
         print("Invalid Option!")
