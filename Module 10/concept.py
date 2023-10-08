@@ -1,6 +1,6 @@
 """
 1. inheritance 
-2. encapsulation
+2. encapsulationUs
 3. polymorphism
 4. abstraction
 --------------
