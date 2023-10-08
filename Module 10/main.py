@@ -1,4 +1,6 @@
 from Menu import Pizza, Burger, Menu, Drinks
+from Restuarant import Ressturant
+from Users import Chef,Customer,Server,Manager
 
 def main():
     menu = Menu()
@@ -24,6 +26,20 @@ def main():
     
     # show Menu
     menu.show_menu()
+
+    korai = Ressturant("Korai",2000,menu)
+    
+    chef = Chef('shufi',1243,'sufi@com','chichi para',10000,'12,12,1900','chef','burger')
+    server = Chef('chouo serer',1243,'restu@com','chichi para',10000,'12,12,1900','server','server')
+    manager = Manager('shufi',1243,'sufi@com','chichi para',10000,'12,12,1900','manager')
+    korai.add_employee('manager',manager)
+    korai.add_employee('chef',chef)
+    korai.add_employee('server',server)
+    
+    
+    #show employee
+    korai.show_employees()
+    
 # call the  main() 
 if __name__ == '__main__':
     main()
