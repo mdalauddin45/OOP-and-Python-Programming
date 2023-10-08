@@ -11,10 +11,12 @@ class Ride_Sharing:
     def add_rider(self,rider):
         self.riders.append(rider)
         
-    def add_rider(self,driver):
+    def add_driver(self,driver):
         self.drivers.append(driver)
         
-
+    def __repr__(self) -> str:
+        # print(f'{self.company_name} with riders: {len(self.riders)} and drivers: {len(self.drivers)}')
+        return f'{self.company_name} with riders: {len(self.riders)} and drivers: {len(self.drivers)}'
 class User(ABC):
     def __init__(self,name,email,nid) -> None:
         self.name=name
@@ -46,14 +48,21 @@ class Rider(User):
     def update_location(self,current_location):
         self.current_location=current_location
         
-    def request_ride(self,destination):
+    def request_ride(self,ride_sharing,destination):
         if not self.current_ride:
             #todo: set ride properly
             #todo: set current ride via ride match
             ride_request = Ride_request(self,destination)
-            ride_matcher = Ride_Matching()
-            self.current_ride = ride_matcher.find_driver(ride_request)
+            ride_matcher = Ride_Matching(ride_sharing.drivers)
+            ride = ride_matcher.find_driver(ride_request)
+            if ride:
+                self.current_ride = ride
 
+    def show_current_ride(self):
+        if self.current_ride:
+            print(self.current_ride)
+        
+        
 class Driver(User):
     def __init__(self, name, email, nid,current_location) -> None:
         super().__init__(name, email, nid)
@@ -86,6 +95,9 @@ class Ride:
         self.end_time = datetime.now()
         self.rider.wallet -= self.estimated_fare
         self.driver.wallet += self.estimated_fare
+    
+    def __repr__(self) -> str:
+        return f'Ride details Started: {self.start_location} to {self.end_location}'
         
 class Ride_request:
     def __init__(self,rider,end_location) -> None:
@@ -93,8 +105,8 @@ class Ride_request:
         self.end_location = end_location
         
 class Ride_Matching:
-    def __init__(self) -> None:
-        self.available_drivers=[]
+    def __init__(self,drivers) -> None:
+        self.available_drivers=drivers
     
     def find_driver(self,ride_request):
          if len(self.available_drivers)>0:
@@ -136,3 +148,18 @@ class Bike(Vehicle):
         
     def start_drive(self):
         self.status = 'unavailable'
+        
+
+
+
+#check the class integration
+
+niya_jao= Ride_Sharing('Niya Jao')
+sakib = Rider("Sakib khan",'sakib@kan.com',1254,'Mohakhali')
+niya_jao.add_rider(sakib)
+
+kala_paki = Driver('kala pakhi', 'kala@pakhi.com',5698, 'gulshan 1')
+niya_jao.add_driver(kala_paki)
+print(niya_jao)
+sakib.request_ride(niya_jao,'Uttora')
+sakib.show_current_ride()
