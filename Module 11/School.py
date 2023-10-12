@@ -2,6 +2,7 @@ class School:
     def __init__(self,name,address) -> None:
         self.name=name
         self.address=address
+        self.teachers = {}
         #composition
         self.classrooms={}
     
@@ -15,6 +16,9 @@ class School:
             # student.id = 
         else:
             print(f'No classroom as named {classroom_name}')
+    
+    def add_teacher(self,subject,teacher):
+        self.teachers[subject]= teacher
 
 class ClassRoom:
     def __init__(self,name) -> None:
@@ -23,6 +27,8 @@ class ClassRoom:
         
     def add_student(self,student):
         serial_id = f'{self.name}--{len(self.students)+1}'
+        student.id = serial_id
+        student.clssroom =self.name
         self.students.append(student)
     
     def __str__(self) -> str:
