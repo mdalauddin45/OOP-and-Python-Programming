@@ -315,7 +315,6 @@ while True:
                                 bank_admin.set_bankruptcy(False)
                                 print("Bankruptcy status updated to False.")
                                 break
-                                
                     elif admin_choice == "8":
                         break
             else:

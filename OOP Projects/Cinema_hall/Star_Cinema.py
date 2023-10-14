@@ -64,7 +64,6 @@ class Hall:
         else:
             return "Show not found with the provided ID."
 
-        
 bts=Star_Cinema()
 hall1 = Hall(5, 5,1)
 hall1.entry_show(12,'jawan maji','10.00 pm')
